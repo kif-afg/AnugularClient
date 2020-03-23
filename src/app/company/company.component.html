@@ -1,0 +1,93 @@
+<div class="card">
+    <div class="card-header" style="text-align:center">
+        <b>WEL COME TO Reflow Maritime test project</b>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="FromCompany" (ngSubmit)="AddCompany(FromCompany.value)">
+            <div class="row">
+                <div class="form-group col-sm-3">
+                    <label for="Name">Company Name</label>
+                    <input type="text" class="form-control" formControlName="Name" id="Name" placeholder="Enter Company Name" >
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="Address">Address</label>
+                        <input type="text" class="form-control" formControlName="Address" id="Address" placeholder="Enter Address" >
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <label for="company">City</label>
+                            <input type="text" class="form-control" formControlName="City" id="City" placeholder="Enter City" >
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label for="company">Country</label>
+                                <input type="text" class="form-control" formControlName="Country" id="Country" placeholder="Enter Country" >
+                                </div>
+                                <div class="form-group col-sm-3">
+                                <label for="company">Phone</label>
+                                <input type="text" class="form-control" formControlName="Phone" id="Phone" placeholder="Enter Phone Number" >
+                                </div>
+                                <div class="form-group col-sm-3">
+                                <label for="company">Email</label>
+                                <input type="text" class="form-control" formControlName="Email" id="Email" placeholder="Enter Email" >
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-3">
+                                    <button type="submit" class="btn btn-primary" >Add Company</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <div class="col-lg-12 table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>companyId</th>
+                                        <th> Name</th>
+                                        <th> Address</th>
+                                        <th>City</th>
+                                        <th>Country</th>
+                                        <th>Phone</th>
+                                        <th>Email</th>
+                                        <th>Owner</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let company of allCompanies|async">
+                                        <td>{{company.companyId}}</td>
+                                        <td>{{company.name}}</td>
+                                        <td>{{company.address}}</td>
+                                        <td>{{company.city}}</td>
+                                        <td>{{company.country}}</td>
+                                        <td>{{company.phone}}</td>
+                                        <td>{{company.email}}</td>
+                                        <td>{{company.owner}}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary mr-1" (click)="CompanyEdit(company.companyId)">Edit</button>
+                                            <button type="button" class="btn btn-danger mr-1" (click)="DeleteCompany(company.companyId)">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Company Name</th>
+                                        <th> Owner</th>
+
+                                    </tr>
+                                </thead>
+                                 <tbody>
+                                    <tr *ngFor="let owner of allOwners|async">
+                                        <td>owner.cId</td>
+                                        <td><owner class="Owner"></owner></td>
+
+                                        <td>
+                                            <button type="button" class="btn btn-danger mr-1" (click)="DeleteOwner(company.companyId)">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
